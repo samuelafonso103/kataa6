@@ -4,11 +4,12 @@ import java.util.Scanner;
 import kata6.toys.Car;
 import kata6.toys.Helicopter;
 import kata6.toys.SerialNumberGenerator;
+import kata6.toys.ToyBusiness;
 
 public class Main {
 
     public static void main(String[] args) {
-        SerialNumberGenerator serialNumberGenerator = new SerialNumberGenerator();
+        ToyBusiness toyBusiness = new ToyBusiness();
     
         while(true){
             System.out.println("Introduce command");
@@ -17,13 +18,9 @@ public class Main {
             if(command.equals("exit")){
                 break;
             } else if (command.equals("car")){
-                Car car = new Car(serialNumberGenerator.next());
-                car.pack();
-                car.label();
+                toyBusiness.createCar();
             }  else if (command.equals("helicopter")){
-                Helicopter helicopter = new Helicopter(serialNumberGenerator.next());
-                helicopter.pack();
-                helicopter.label();
+                toyBusiness.createHelicopter();
             } else{
                 System.out.println("Unknown command");
             }
