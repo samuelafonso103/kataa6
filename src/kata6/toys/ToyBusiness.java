@@ -1,21 +1,29 @@
 package kata6.toys;
 
+import kata6.toyproducts.Toy;
+import kata6.toyproducts.models.CarToy;
+import kata6.toyproducts.models.HelicopterToy;
+
 public class ToyBusiness {
-    SerialNumberGenerator serialNumberGenerator = new SerialNumberGenerator(); 
+    private final SerialNumberGenerator serialNumberGenerator = new SerialNumberGenerator(); 
             
-    public Car createCar(){
-        Car car = new Car(serialNumberGenerator.next());
-        car.pack();
-        car.label();
-        return car;
+    public Toy createToy(String type){
+        switch (type){
+            case "car": 
+                CarToy car = new CarToy(serialNumberGenerator.next());
+                car.pack();
+                car.label();
+                return car;
+        
+        
+            default:
+                HelicopterToy helicopter = new HelicopterToy(serialNumberGenerator.next());
+                helicopter.pack();
+                helicopter.label();
+                return helicopter;               
+        }           
     }
     
-    public Helicopter createHelicopter(){
-        Helicopter helicopter = new Helicopter(serialNumberGenerator.next());
-        helicopter.pack();
-        helicopter.label();
-        return helicopter;
-    }
 
     public ToyBusiness() {
         
